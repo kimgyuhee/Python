@@ -1,16 +1,48 @@
 def solution(n, m, a, b, c, d):
-    answer = ''
+
+    def minT(weight):
+        min = 100
+        for i in weight :
+            if i < min :
+                min = i
+        return i
+    
+    weight1 = []
+    for i in range(0, m) :
+        weight1.append(c[i]*1+d[i])
+    print(weight1)
+
+    weight2 = []
+    for i in range(0, m) :
+        weight2.append(c[i]*2+d[i])
+    print(weight2)
+
+
+    result1 = minT(weight1)
+    result2 = minT(weight2)
+
+    print(f"result1 => {result1}")
+    print(f"result2 => {result2}")
+
+    if result1 != result2:
+        if result1*result2 < 0 :
+            answer = "INF"
+        else :
+            answer = result1
+    else :
+        if result1 == 0 :
+            answer = "NONE"
+        elif result1 < 0 :
+            answer = "-INF"
+        else :
+            answer = result1
+
     return answer
-
-
-
-
-
 
 def checkIntInput(a, b) :
     while 1:
         try :
-            n = int(input("입력해봐")) #정점의 개수
+            n = int(input(">>>"))
         except ValueError :
             print("숫자를 입력해주세요 :)"); continue
         else :
@@ -22,24 +54,33 @@ def checkIntInput(a, b) :
     return n
 
 n = checkIntInput(1, 20000)
+m = checkIntInput(1, 50000)
+a = []
+for i in range(0, m) :
+    valueA = checkIntInput(1, n)
+    a.append(valueA)
+print(a)
+b = []
+for i in range(0, m) :
+    while 1:
+        valueB = checkIntInput(1, n)
+        if(a[i] == valueB) :
+            continue
+        else :
+            break
+    b.append(valueB)
+print(b)
+c = []
+for i in range(0, m) :
+    valueC = checkIntInput(-1000, 1000)
+    c.append(valueC)
+print(c)
+d = []
+for i in range(0, m) :
+    valueD = checkIntInput(-1000000, 1000000)
+    d.append(valueD)
+print(d)
 
-print(n)
-    # if n.isdigit() :
-    #     print(n)
-    #     n = int(n)
-    #     print(type(n))
-    #     return n
-    # else :
-    #     if n.find('-'):
-    #         print(n)
-    #         n = int(n)
-    #         print(type(n))
-    #         return n
-    #     else :
-    #         return -1
 
-
-# while True :
-#     n = checkIntInput()
-#     if n >=1 and n<=20000 : # n의 범위
-#         break 
+result = solution(n, m, a, b, c, d)
+print(result)
