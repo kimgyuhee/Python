@@ -17,5 +17,10 @@ def solution(dots):
     answer = abs(width[0]-width[1])*abs(length[0]-length[1])
     return answer
 
+# 다른 사람 풀이
+def solution(dots):
+    return (max(dots)[0] - min(dots)[0])*(max(dots)[1] - min(dots)[1])
+
+
 print(solution([[1, 1], [2, 1], [2, 2], [1, 2]]))
 print(solution([[-1, -1], [1, 1], [1, -1], [-1, 1]]))
