@@ -75,6 +75,71 @@ def solution(board):
     return answer
 
 
+
+
+def solution(board):
+    answer = len(board) * len(board[0])
+    safe = [[0 for _ in range(len(board[0]))] for _ in range(len(board))]
+
+    def is_in_board(row, col):
+        return 0 <= row < len(board) and 0 <= col < len(board[0])
+
+    for r in range(len(board)):
+        for c in range(len(board[0])):
+            if board[r][c] == 1:
+                for dr in range(-1, 2):
+                    nr = r + dr
+                    for dc in range(-1, 2):
+                        nc = c + dc
+
+                        if is_in_board(nr, nc):
+                            answer -= safe[nr][nc] ^ 1
+                            safe[nr][nc] |= 1
+
+    return answer
+
+# 다른사람 풀이
+def solution(board):
+    n = len(board)
+    danger = set()
+    for i, row in enumerate(board):
+        for j, x in enumerate(row):
+            if not x:
+                continue
+            danger.update((i+di, j+dj) for di in [-1,0,1] for dj in [-1, 0, 1])
+    return n*n - sum(0 <= i < n and 0 <= j < n for i, j in danger)
+
+
+# 다른사람 풀이
+def get_arounds(x, y, max_length):
+    print(x, y, max_length)
+    arounds = []
+
+    for m in (-1, 0, 1):
+        for n in (-1, 0, 1):
+            loc = x+m, y+n
+            if 0 <= loc[0] < max_length and 0 <= loc[1] < max_length:
+                arounds.append(loc)
+
+    print(arounds)
+    return arounds
+
+
+def solution(board):
+    mines = []
+    n = len(board)
+    for i in range(n):
+        for j in range(n):
+            if board[i][j]:
+                mines.append((i,j))
+    for x, y in mines:
+        arounds = get_arounds(x, y, n)
+        for a, b in arounds:
+            board[a][b] = 1
+
+    return sum(row.count(0) for row in board)
+
 print(solution([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]))
+print(solution([[1, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 1]]))
 print(solution([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 1, 0], [0, 0, 0, 0, 0]]))
 print(solution([[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1]]))
