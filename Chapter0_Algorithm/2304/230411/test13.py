@@ -7,6 +7,29 @@
 
 def solution(num, total):
     answer = []
+    value = total//num
+    for i in range((num-1)//2) :
+        answer.append(value-(i+1))
+    for i in range(num//2+1) :
+        answer.append(value+i)
+
+    return sorted(answer)
+
+
+# 다른 사람 풀이 방법1
+def solution(num, total):
+    return [(total - (num * (num - 1) // 2)) // num + i for i in range(num)]
+
+
+# 다른 사람 풀이 방법2
+def solution(num, total):
+    answer = []
+    var = sum(range(num+1))
+    diff = total - var
+    print(diff, var)
+    start_num = diff//num
+    print(start_num)
+    answer = [i+1+start_num for i in range(num)]
     return answer
 
 
