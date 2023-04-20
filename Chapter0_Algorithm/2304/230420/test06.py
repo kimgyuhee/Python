@@ -30,7 +30,6 @@ def solution(food):
         if food[f]//2 == 0 :
             continue
         answer +=str(f)*(food[f]//2)
-
     
     return answer +"0"+ answer[::-1]
 
