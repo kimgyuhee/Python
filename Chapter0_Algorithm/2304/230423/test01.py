@@ -91,7 +91,11 @@ def solution(n, m, section):
                 section.remove(i)
     return answer
 
-
+"""
+코드 알고리즘은 그대로 두고 시간만 줄일 수는 없을까요?
+어떻게 수정하는게 좋을까요?
+해결해주실 똑똑이님 구합니다.
+"""
 print("왜 출력이 안되니?")
 print(solution(8,4,[2,3,6]))
 print(solution(8,4,[2,3,5]))
