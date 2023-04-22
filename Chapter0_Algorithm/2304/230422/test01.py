@@ -52,8 +52,8 @@ def solution(dartResult):
             else :
                 value1 = result.pop()*2
                 value2 = result.pop()*2
-                result.append(value1)
                 result.append(value2)
+                result.append(value1)
 
         elif dart[i] == "#" :
             result.append(result.pop()*(-1))
@@ -120,6 +120,25 @@ def solution(dartResult):
 
         final.append(j)
     return sum(final)
+
+
+
+import re
+
+def solution(dartResult):
+    bonus = {'S' : 1, 'D' : 2, 'T' : 3}
+    option = {'' : 1, '*' : 2, '#' : -1}
+    p = re.compile('(\d+)([SDT])([*#]?)')
+    # print(p)
+    dart = p.findall(dartResult)
+    print(dart)
+    for i in range(len(dart)):
+        if dart[i][2] == '*' and i > 0:
+            dart[i-1] *= 2
+        dart[i] = int(dart[i][0]) ** bonus[dart[i][1]] * option[dart[i][2]]
+        print(dart[i])
+    answer = sum(dart)
+    return answer
 
 print(solution("1S2D3T"))
 print(solution("1S2D#3T"))
