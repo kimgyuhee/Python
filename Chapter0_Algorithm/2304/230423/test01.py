@@ -91,11 +91,36 @@ def solution(n, m, section):
                 section.remove(i)
     return answer
 
+def solution(n, m, section):
+    answer = 0
+    while len(section)!= 0 :
+        answer +=1
+        start = section.pop()
+        end = start-m+1
+        if end < 0 :
+            end =  1
+        
+        for i in range(end, start) :
+            if i in section :
+                section.remove(i)
+    return answer 
+
 """
 코드 알고리즘은 그대로 두고 시간만 줄일 수는 없을까요?
 어떻게 수정하는게 좋을까요?
 해결해주실 똑똑이님 구합니다.
 """
+
+
+def solution(n, m, section):
+    paint, answer = section[0]-1, 0
+    for v in section:
+        if paint < v:
+            paint = v+m-1
+            answer += 1
+
+    return answer
+
 print("왜 출력이 안되니?")
 print(solution(8,4,[2,3,6]))
 print(solution(8,4,[2,3,5]))

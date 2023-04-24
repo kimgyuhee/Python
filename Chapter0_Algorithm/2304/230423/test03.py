@@ -34,6 +34,39 @@ def solution(X, Y):
         answer = "0"
     return answer
 
+
+
+def solution(X, Y):
+    answer = ''
+    countSet = {}
+    for x in X :
+        if x in Y and x not in countSet:
+            countX = X.count(x)
+            countY = Y.count(x)
+            if countY != 0 :
+                countSet[x] = min(countX, countY)
+            answer +=x*min(countX,countY)
+            
+    if answer == '' :
+        answer = "-1"
+    elif int(answer) == 0 :
+        answer = "0"
+    else :
+        a = reversed(sorted(answer))
+        answer = "".join(a)
+    return answer
+
+
+from collections import Counter
+def solution(x,y):
+    result = sorted(list((Counter((int(i) for i in x ))&Counter((int(i) for i in y ))).elements()), reverse=True)
+    if result == []:
+        return '-1'
+    if result[0] == 0:
+        return '0'
+    return ''.join((str(i) for i in result))
+
+
 print(solution("100", "2345"))
 print(solution("100", "203045"))
 print(solution("5525", "1255"))
