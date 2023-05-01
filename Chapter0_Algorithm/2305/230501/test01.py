@@ -39,3 +39,31 @@ def solution(arr, n):
                 answer.append(arr[i])
     return answer
 
+# 다른 사람 풀이1
+def solution(arr, n):
+    return [arr[i] + n if i % 2 == 0 else arr[i] for i in range(len(arr))] if len(arr) % 2 != 0 else [arr[i] + n if i % 2 != 0 else arr[i] for i in range(len(arr))]
+
+# 다른 사람 풀이2
+def solution(arr, n):
+    ans = []
+    k = len(arr)%2
+    for i, a in enumerate(arr):
+        if (i+k)%2 != 0:
+            ans.append(a+n)
+        else:
+            ans.append(a)
+    return ans
+
+"""
+정수 n과 k가 주어졌을 때, 1 이상 n이하의 정수 중에서 k의 배수를 오름차순으로 
+저장한 배열을 return 하는 solution 함수를 완성해 주세요.
+"""
+def solution(n, k):
+    answer = []
+    for i in range(n//k) :
+        answer.append((i+1)*k)
+    return answer
+
+# 다른 사람 풀이1
+def solution(n, k):
+    return [i for i in range(k,n+1,k)]
