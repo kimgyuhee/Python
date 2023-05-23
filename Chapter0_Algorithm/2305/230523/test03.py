@@ -12,3 +12,10 @@ def solution(my_string, queries):
         change_str = my_string[s:e+1][::-1]
         my_string = my_string[:s]+change_str+my_string[e+1:]
     return my_string
+
+# 다른사람풀이
+def solution(my_string, queries):
+    answer=list(my_string)
+    for s,e in queries:
+        answer[s:e+1]=answer[s:e+1][::-1]
+    return ''.join(answer)
