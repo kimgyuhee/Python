@@ -12,7 +12,6 @@ i번째 직사각형 나무블록의 크기는 Ai × Bi이다.
 
 def solution(n, a, b):
     answer = 0
-    i = 0
     for A, B in zip(a, b) :
         answer += (A*B)
     return answer
