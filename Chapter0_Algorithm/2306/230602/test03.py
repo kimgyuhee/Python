@@ -184,6 +184,8 @@ def solution(clothes):
     answer = reduce(lambda x, y: x*(y+1), cnt.values(), 1) - 1
     return answer
 
+# 종류 + 1) 곱하고 1 빼면 되는 이유:
+# ex. (a + 1)(b + 1)(c + 1) - 1 = (a + b + c) + (ab + bc + ca) + abc
 
 print(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], 
 ["green_turban", "headgear"]]	))
