@@ -82,7 +82,7 @@ def solution(want, number, discount):
     answer = 0
     day = 0
     
-    for i, d in enumerate(discount) :
+    for i in range(len(discount)) :
         n = number.copy()
         if len(discount[i:]) < sum(number) :
             break
