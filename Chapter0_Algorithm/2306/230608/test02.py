@@ -64,16 +64,25 @@ print(solution(80, [[80,20],[50,40],[30,10]]))
 answer = 0
 N = 0
 visited = []
+i = 1
 
 
 def dfs(k, cnt, dungeons):
+    global i
     global answer
+    print("="*10, "CASE", i, "="*10)
+    i+=1
+    print(cnt, "> ",answer)
     if cnt > answer:
         answer = cnt
 
     for j in range(N):
+        print(k, ">=", dungeons[j][0], "and not", visited[j])
+        print(k >= dungeons[j][0] and not visited[j])
         if k >= dungeons[j][0] and not visited[j]:
             visited[j] = 1
+            print(dungeons)
+            print(f"dfs(k - dungeons[{j}][1], {cnt} + 1, {dungeons})")
             dfs(k - dungeons[j][1], cnt + 1, dungeons)
             visited[j] = 0
 
@@ -83,4 +92,11 @@ def solution(k, dungeons):
     N = len(dungeons)
     visited = [0] * N
     dfs(k, 0, dungeons)
+    print(N, "잉?")
     return answer
+
+print(N)
+print(visited)
+
+
+print(solution(80, [[80,20],[50,40],[30,10]]))
