@@ -52,8 +52,11 @@ import heapq
 def solution(scoville, K):
     answer = 0
     heapq.heapify(scoville)
-    print(scoville)
-    while scoville[0] <= K :
+    # print(scoville)
+    if len(scoville) == 1 :
+        if scoville[0] == K :
+            return 0
+    while scoville[0] < K :
         if len(scoville) <= 1 :
             return -1
         answer +=1
@@ -64,4 +67,26 @@ def solution(scoville, K):
     return answer
 
 
+
+# 다른 사람 문제 풀이 1
+import heapq as hq
+
+def solution(scoville, K):
+
+    hq.heapify(scoville)
+    answer = 0
+    while True:
+        first = hq.heappop(scoville)
+        if first >= K:
+            break
+        if len(scoville) == 0:
+            return -1
+        second = hq.heappop(scoville)
+        hq.heappush(scoville, first + second*2)
+        answer += 1  
+
+    return answer
+
 print(solution([1, 2, 3, 9, 10, 12], 7))
+print(solution([7], 7))
+print(solution([7, 7], 7))
