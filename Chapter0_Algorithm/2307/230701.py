@@ -30,6 +30,18 @@ def solution(numbers):
     return result
 
 
+def solution(numbers):
+    answer = ""
+    digit_2 = []
+    for n in numbers :
+        value = bin(n)
+        digit_2.append(value[2:])
+    digit_2.sort(key=len)
+    print(digit_2[::-1])
+    for d in digit_2[::-1] :
+        value = int(d, 2)
+        answer +=str(value)
+    return str(answer)
 
 # 채점 결과
 # 정확성: 26.7
@@ -48,5 +60,77 @@ def solution(numbers):
             answer = int(num)
     return str(answer)
 
+
+
+
+# 채점 결과
+# 정확성: 53.3
+# 합계: 53.3 / 100.0
+
+from itertools import permutations
+def find_combin_max(value) :
+    case_list = list(permutations(value,len(value)))
+    result = 0
+    for case in case_list :
+        value = "".join(list(map(str, case)))
+        if result < int(value) :
+            result = int(value)
+    return result
+
+def solution(numbers):
+    answer = ""
+    num_dict = {9-i:[] for i in range(10)}
+    num_str_list = list(map(str, numbers))
+    for msl in num_str_list :
+        num_dict[int(msl[0])].append(int(msl))
+
+    for value in num_dict.values() :
+        if len(value)!=0 :
+            result = find_combin_max(value)
+            answer +=str(result)
+
+    return answer
+
+
+n = [1, 211, 34, 1000, 999]
+for num in n :
+    d = len(str(num))
+    print(num, d)
+    if num <= 10 :
+        if num%10 == 0 :
+            key = num//10
+        else :
+            key = num%10
+    else :
+        key = num//(10**(d-1))
+    print(key)
+
+numbers = [1, 211, 34, 43, 1000, 999]
+numbers = list(map(str, numbers))
+for number in numbers :
+    print("=="*10)
+    print(number * 4)
+    print((number * 4)[:4])
+numbers.sort(key=lambda x: (x * 4)[:4], reverse=True)
+print(numbers)
+
+
+# 다른 사람 풀이...
+# 천재 인정
+def solution(numbers):
+    # 1. 모든 수를 문자열로 변환
+    numbers = list(map(str, numbers))
+
+    # 2. x+y와 y+x를 비교하여 정렬
+    numbers.sort(key=lambda x: (x * 4)[:4], reverse=True)
+    # 3. 정렬된 numbers를 이어붙인 뒤 반환
+    answer = ''.join(numbers)
+
+    # 0이 여러개일 경우, "000" 대신 "0"을 반환하도록 예외처리
+    if answer[0] == '0':
+        return '0'
+    else:
+        return answer
 print(solution([6, 10, 2]))
+print(solution([17, 18, 2]))
 print(solution([3, 30, 34, 5, 9]))
