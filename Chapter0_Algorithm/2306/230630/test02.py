@@ -59,6 +59,8 @@ def solution(bridge_length, weight, truck_weights):
     now_wight = truck_weights.popleft()
     possible = True
     now_count = 0
+    if len(truck_weights) == 0 :
+        answer += 1
     while len(truck_weights)!=0:
         print(f"현재 지난 초 : {answer}, now_count : {now_count}")
         print(f"대기 중인 트럭 : {truck_weights}")

@@ -76,6 +76,10 @@ for i in d :
 
 print("="*30)
 
+# 채점 결과
+# 정확성: 2.4
+# 효율성: 0.0
+# 합계: 2.4 / 35.0
 def case1(stroe, n1, n2) :
     find_idx, move_idx = 0,0
     for key, value in stroe.items() :
@@ -137,3 +141,11 @@ def solution(n, queries) :
 
 print(solution(4, [[3,2,3],[1,3,2],[3, 2, 3], [1,2,0], [3,0,1],[2,2,0],[3,2,3],[3,0,2]]))
 print(solution(7, [[1,0,1],[1,2,3],[3,1,3],[1,2,0],[3,1,3],[1,1,5],[1,5,4],[3,4,5],[2,2,5],[3,4,5]]))
+
+
+d = {0:[2,3,1], 1:[2,3], 2 : []}
+for key, value in d.items() :
+    if [2, 3] in value :
+        print("Tes")
+    else :
+        print("No")
