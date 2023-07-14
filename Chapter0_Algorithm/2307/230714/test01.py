@@ -68,7 +68,7 @@ def solution(n, t, m, p):
     answer = ""
     n_number = number(t, n)
     # print(len(n_number))
-    # print(n_number)
+    print(n_number)
     for i in range(p-1, len(n_number), m) :
         if len(answer) == t :
             break
