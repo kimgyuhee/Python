@@ -76,9 +76,6 @@ def solution(record):
         else :
             print("입력이 잘못되었습니다.")
 
-    print(memory)
-    print(answer)
-
     finally_answer = []
     for a in answer :
         change_id = ""
@@ -88,4 +85,63 @@ def solution(record):
         finally_answer.append(change_id)
     return finally_answer
 
+
+
+
+
+
+def solution(record):
+    answer = []
+    memory = {}
+    for r in record :
+        record_list = r.split(" ")
+        if len(record_list) == 3 :
+            action, user_id, nickname = record_list[0], record_list[1], record_list[2]
+        else :
+            action, user_id, nickname = record_list[0], record_list[1], ""
+
+        memory[user_id] = nickname
+
+        if action[0] == "E" : # Enter
+            answer.append(f"{user_id}님이 들어왔습니다")
+        elif action[0] == "L" : # Leave
+            answer.append(f"{user_id}님이 나갔습니다.")
+        elif action[0] == "C" : # Change
+            print("###")
+        else :
+            print("입력이 잘못되었습니다.")
+
+    print(memory)
+    print(answer)
+    return ""
+
+
+
+
+def solution1(record):
+    answer = []
+    memory = {info.split()[1] : info.split()[2] for info in record if info.split(" ")[0] != "Leave"}
+    
+    for r in record :
+        if r.split()[0] == "Enter" :
+            answer.append(f"{memory[r.split()[1]]}님이 들어왔습니다.")
+        elif r.split()[0] == "Leave" :
+            answer.append(f"{memory[r.split()[1]]}님이 나갔습니다.")
+
+    return answer
+    
+
+
+# 다른 사람 풀이 
+def solution(record):
+    answer = []
+    id={info.split()[1]:info.split()[2] for info in record if info.split()[0]!="Leave"}
+    for info in record:
+        if info.split()[0]=="Enter":
+            answer.append(id[info.split()[1]]+"님이 들어왔습니다.")
+        elif info.split()[0]=="Leave":
+            answer.append(id[info.split()[1]]+"님이 나갔습니다.")
+    return answer
+
 print(solution(["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]))
+print(solution1(["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]))
