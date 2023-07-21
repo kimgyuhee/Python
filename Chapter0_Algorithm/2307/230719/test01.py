@@ -49,5 +49,30 @@ def solution(numbers):
     return answer
 
 
+
+
+# 채점 결과
+# 정확성: 91.3
+# 합계: 91.3 / 100.0
+# 시간초과
+def solution(numbers):
+    answer = [-1]
+    backMax = numbers[-1]
+    for i in range(len(numbers)-2, -1, -1) :
+        # print(numbers[i])
+        if backMax <= numbers[i] :
+            backMax = numbers[i]
+            answer.append(-1)
+            continue
+        for j in range(i+1, len(numbers)) :
+            if numbers[j] > numbers[i] :
+                answer.append(numbers[j])
+                break
+    
+    return answer[::-1]
+
+
 print(solution([2, 3, 3, 5])) # [3, 5, 5, -1]
 print(solution([9, 1, 5, 3, 6, 2])) # [-1, 5, 6, 6, -1, -1]
+
+

@@ -30,6 +30,7 @@ return 하도록 solution 함수를 완성해주세요.
 """
 
 # 아래, 오른쪽, 왼쪽, 위 -> 오른쪽, 아래쪽으로만 향하자
+
 dx = [0,1,-1,0]
 dy = [1,0,0,-1]
 route = [[0,0]]
@@ -115,6 +116,63 @@ def solution(maps) :
     
     
     return answer
+
+
+# 테스트 10 〉	통과 (0.10ms, 10.2MB)
+# 테스트 4 〉	통과 (5.64ms, 10.4MB)
+from collections import deque
+def solution(maps) :
+    n = len(maps)
+    m = len(maps[0])
+
+    dx = [-1, 0, 1, 0]
+    dy = [0, 1, 0, -1]
+
+    queue = deque([])
+    queue.append([0, 0, 1])
+    maps[0][0] = 0
+
+    while len(queue) :
+        x, y, count = queue.popleft()
+
+        for i in range(4) :
+            nx = x + dx[i]
+            ny = y + dy[i]
+
+            if (nx == n-1 and ny == m-1) : return count+1
+            if (nx < 0 or nx >= n or ny < 0 or ny >= m) : continue
+
+            if maps[nx][ny] == 1 :
+                maps[nx][ny] = 0
+                queue.append([nx, ny, count+1])
+
+    return -1
+
+
+print("#3#3"*10)
+
+
+def solution(maps) :
+    n = len(maps)
+    m = len(maps[0])
+    dx = [0,1,-1,0]
+    dy = [1,0,0,-1]
+    route = deque([[0,0,1]])
+    while len(route):
+        pos = route.popleft()
+        for i in range(4) :
+            x = pos[0] + dx[i]
+            y = pos[1] + dy[i]
+            if x == n-1 and y == m-1 :
+                return pos[2] +1
+            if (x < 0 or x >= n or y < 0 or y >= m) :
+                continue
+
+            if maps[x][y] == 1 :
+                maps[x][y] = 0
+                route.append([x, y, pos[2]+1])
+
+    return -1
 
 print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]))
 print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,0,1]]))
