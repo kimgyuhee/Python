@@ -77,11 +77,8 @@ def solution(n) :
 
 
 
-
-
-
 from itertools import product
-def solution(n) :
+def productSolution(n) :
     country124 = []
     count = 1
     while len(country124) < 5000 :
@@ -94,5 +91,94 @@ def solution(n) :
     answer = country124[n-1]
     return answer
 
-for i in range(1, 20) :
-    print(i, "=>" , solution(i), " | 요상한 나의 식 =>",ternary1(i),ternary(i))
+for i in range(1, 30) :
+    print(i, "=>" , productSolution(i), " | 요상한 나의 식 =>",ternary1(i),ternary(i))
+    # print(i**(1/2))
+
+for i in range(0, 10) :
+    print(3**(i+1))
+
+
+
+from itertools import product
+def solution(n) :
+    num124 = 0
+    digit = 1
+    comparison_range = 3**digit
+    while n > comparison_range :
+        if n > comparison_range :
+            digit +=1
+            comparison_range += 3**(digit)
+
+    answer = ""
+
+    for i in range(digit-1, -1, -1) :
+        
+        n, r = divmod(n, 3**i)
+
+
+    print(answer)
+            
+
+    return " "
+
+# 27 9 3 1
+
+for i in range(1, 41) :
+    # print(i, "=>" , solution(i), productSolution(i))
+    print(solution(i), productSolution(i))
+    print()
+
+
+def solution(n):
+    result = []
+    while n:
+        t = n % 3
+        if not t:
+            print(t, n)
+            t = 3
+            n -= 1
+        result.append(str(t))
+        n //= 3
+    print(result[::-1])
+
+    for i in range(len(result)):
+        if result[i] == '3':
+            result[i] = '4'
+    return ''.join(result[::-1])
+
+def solution(n):
+    answer = ''
+    while n > 0:
+        n -= 1
+        answer = '124'[n%3] + answer
+        n //= 3
+    return answer
+
+for i in range(1, 41) :
+    # print(i, "=>" , solution(i), productSolution(i))
+    print(solution(i))
+    # print()
+
+
+print("\n\n\n\n")
+# 다른 사람 코드 
+def solution(n):
+    a = []
+    while n:
+        print(n, n//3, n%3, end ="... ")
+        if str(n % 3) != '0':
+            a.insert(0, str(n % 3))
+            print(a)
+        else:
+            a.insert(0, '4')
+            print(a)
+            n -= 1
+        n //= 3
+        print(f"n={n}")
+    return ''.join(a)
+
+for i in range(1, 41) :
+    # print(i, "=>" , solution(i), productSolution(i))
+    print(i, "=>" ,solution(i))
+    # print()
