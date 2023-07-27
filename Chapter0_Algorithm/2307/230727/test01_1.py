@@ -129,22 +129,15 @@ def removeBlock(removeBlockIdx, board) :
     for i, j in removeBlockIdx :
         if board[i][j] != " " :
             count +=1
-            print(i, j)
             if i != 0 :
                 for ii in range(i, 0, -1) :
-                    print(ii)
                     board[ii][j] = board[ii-1][j]
-                    for b in board :
-                        print(b)
-                    print()
-                # board[i-1][j] = " "
                 board[0][j] = " "
             else :
                 board[i][j] = " "
 
-        #for b in board :
-        #    print(b)
-        # print()
+        for b in board :
+            print(b)
 
     return count
 
@@ -177,4 +170,5 @@ print(solution(4, 5, ["CCBDE", "AAADE", "AAABF", "CCBBF"])) #14
 print("-"*25)
 print(solution(6, 6, ["TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"])) #15
 print("-"*25)
+
 solution(2, 4, ["baab", "baab"]) # 답 : 4
