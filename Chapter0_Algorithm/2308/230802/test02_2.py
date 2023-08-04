@@ -59,6 +59,7 @@ def solution(bridge_length, weight, truck_weights):
     p = list(truck_weights) # 트럭 무게
     x = [0] * bridge_length # 다리
     s=0
+    print(p)
     while (x):
         time += 1
         print(s, end = " => ")
@@ -77,3 +78,11 @@ def solution(bridge_length, weight, truck_weights):
 
 
 print(solution(10, 12, [4,4,4,2,2,1,1,1,1]))
+
+d = deque([1, 2, 3, 4, 5])
+l = [1, 2, 3, 4, 5, 6]
+d.append(6)
+print(d)
+
+for i in range(len(l)) :
+    print(l.pop(0))
