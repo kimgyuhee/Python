@@ -1,14 +1,9 @@
-"""
-회사원 Demi는 가끔은 야근을 하는데요, 
-야근을 하면 야근 피로도가 쌓입니다. 
-야근 피로도는 야근을 시작한 시점에서 남은 일의 작업량을 제곱하여 더한 값입니다. 
-Demi는 N시간 동안 야근 피로도를 최소화하도록 일할 겁니다.
-Demi가 1시간 동안 작업량 1만큼을 처리할 수 있다고 할 때, 
-퇴근까지 남은 N 시간과 각 일에 대한 작업량 works에 대해 
-야근 피로도를 최소화한 값을 리턴하는 함수 solution을 완성해주세요.
+#2309/230920/test03.py 채점 코드
+#채점 결과
+#정확성: 13.3
+#효율성: 0.0
+#합계: 13.3 / 100.0
 
-"""
-# 8 2 2 -> 4 2 2(24) 5 2 2 -> 1 2 2(9), 2 1 2
 
 def solution(works, n):
     answer = 0
@@ -27,8 +22,14 @@ def solution(works, n):
         
         intervals.reverse()
         for i in range(len(intervals)-1) :
-            #print(i)
-            #print(intervals)
+            print(i)
+            print(f"""
+==============================
+{i}번째 인덱스에 대해 차이 값을 줄이고 있습니다.               
+{intervals}
+{time}
+==============================
+""")
             if time == 0 or sum(intervals) == 0 : # 종료될 수 있는 조건
                 break
 
@@ -39,17 +40,17 @@ def solution(works, n):
                     intervals[i] -= sub
                     works_sort[len(works_sort)-i-1] -=sub
             
-            # print(">>>", works_sort)
-            # print(intervals)
+            #print(">>>", works_sort)
             if intervals[i] == intervals[i+1] and intervals[i]!=0 and time!=0:
                 # print("안들어오나요 ?")
                 while time != 0 :
                     if len(intervals) > 2 and len(intervals) != i+1 :
                         if intervals[i+1] == intervals[i+2] :
                             break
-                    # print(intervals)
-                    # print(works_sort)
-                    if time == 1 :
+                    print(intervals)
+                    print(">>>", works_sort)
+                    print("\n", time)
+                    if time == (i+1) :
                         works_sort[len(works_sort)-i-1] -=1
                         intervals[i] -= 1
                         time-=1
@@ -69,8 +70,30 @@ def solution(works, n):
         answer += work**2
     return answer
 
-print(solution([8, 8, 3, 3], 5)) # 6 6 3 3 / 8 4 3 3[36, 36, 9, 9] [64, 16, 9, 9]
-print(solution([10, 8, 3, 3], 20)) # 7,7, 3, 3 / 8, 6, 3, 3 [49,49 / 64, 36]
-print(solution([4, 3, 3], 4)) #12
-print(solution([2, 1, 2], 1)) #6
-print(solution([1, 1], 3)) #0
+
+from heapq import heapify, heappush, heappop
+
+def solution(works, n):
+# def solution(n, works):
+    if sum(works) <= n:
+        return 0
+
+    works = [(-1) * work for work in works]
+    heapify(works)
+    while n:
+        print(n)
+        print(">>>", works)
+        curr_work = heappop(works)
+        print(">>> heappop", works)
+        post_work = curr_work + 1
+        print(">>> post_work : ", post_work)
+        heappush(works, post_work)
+        print(">>> heappush", works)
+        n -= 1
+
+    return sum([work ** 2 for work in works])
+
+print(solution([10, 4, 4, 7, 1, 4, 3, 3], 10)) # 27 + 1 + 64 = 92
+print("="*27)
+print(solution([30, 47, 1, 9, 10, 1, 1 ,15, 20],72)) # 37+20+10+5 = 72
+# 500 + 81 + 3
