@@ -107,6 +107,28 @@ def solution(expression):
     return abs(heapq.heappop(cal))
 
 
+def solution(expression):
+    operations = [('+', '-', '*'),('+', '*', '-'),('-', '+', '*'),('-', '*', '+'),('*', '+', '-'),('*', '-', '+')]
+    answer = []
+    count = 1
+    for op in operations:
+        a = op[0]
+        b = op[1]
+        temp_list = []
+
+        for e in expression.split(a):
+            print("="*20)
+            print(count)
+            print(e)
+            temp = [f"({i})" for i in e.split(b)]
+            print(temp)
+            temp_list.append(f'({b.join(temp)})')
+            print(temp_list)
+            count +=1
+        answer.append(abs(eval(a.join(temp_list))))
+        count = 1
+    return max(answer)
+
 print(solution("100-200*300-500+20"))
 print(solution("50*6-3*2"))
 print(solution("50*0-3*2"))
