@@ -1,0 +1,77 @@
+{
+  // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+  // 기존 특성에 대한 설명을 보려면 가리킵니다.
+  // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "bj_5597",
+      "request": "launch",
+      "mainClass": "D240130.bj_5597",
+      "projectName": "2401_2672950d"
+    },
+    {
+      "type": "java",
+      "name": "bj_10813",
+      "request": "launch",
+      "mainClass": "D240130.bj_10813",
+      "projectName": "2401_2672950d"
+    },
+    {
+      "type": "java",
+      "name": "bj_10810",
+      "request": "launch",
+      "mainClass": "D240130.bj_10810",
+      "projectName": "2401_2672950d"
+    },
+    {
+      "type": "java",
+      "name": "bj_10807",
+      "request": "launch",
+      "mainClass": "D240129.bj_10807",
+      "projectName": "2401_2672950d"
+    },
+    {
+      "type": "java",
+      "name": "bj_25314",
+      "request": "launch",
+      "mainClass": "D240129.bj_25314",
+      "projectName": "2401_2672950d"
+    },
+    {
+      "type": "java",
+      "name": "bj_25304",
+      "request": "launch",
+      "mainClass": "D240129.bj_25304",
+      "projectName": "2401_2672950d"
+    },
+    {
+      "type": "java",
+      "name": "test1",
+      "request": "launch",
+      "mainClass": "test1",
+      "projectName": "2401_2672950d"
+    },
+    {
+      "type": "java",
+      "name": "bj_11382",
+      "request": "launch",
+      "mainClass": "bj_11382",
+      "projectName": "2401_2672950d"
+    },
+    {
+      "type": "java",
+      "name": "test",
+      "request": "launch",
+      "mainClass": "test",
+      "projectName": "2401_2672950d"
+    },
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    }
+  ]
+}
