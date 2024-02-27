@@ -8,9 +8,9 @@ public class bj_18870 {
 
     public static void main(String[] args) {
 
-        Scanner in = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        int N = in.nextInt();
+        int N = sc.nextInt();
 
         int[] origin = new int[N]; // 원본 배열
         int[] sorted = new int[N]; // 정렬 할 배열
@@ -18,7 +18,7 @@ public class bj_18870 {
 
         for (int i = 0; i < N; i++) {
             // 정렬할 배열과 원본 배열에 값을 넣어준다.
-            sorted[i] = origin[i] = in.nextInt();
+            sorted[i] = origin[i] = sc.nextInt();
         }
 
         // 정렬 할 배열에 대해 정렬을 수행해준다.
@@ -46,5 +46,6 @@ public class bj_18870 {
 
         System.out.println(sb);
 
+        sc.close();
     }
 }
